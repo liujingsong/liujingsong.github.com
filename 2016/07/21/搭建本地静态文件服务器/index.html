@@ -84,28 +84,19 @@
 
 
 
-<meta name="description" content="搭建自己的博客    参考文章:  http://sunwhut.com/2015/10/30/buildBlog/
-
-工具准备
-选择工具
- 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大">
+<meta name="description" content="node.js介绍及安装介绍&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。
+&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建自己的博客">
-<meta property="og:url" content="https://github.com/liujingsong/2016/07/21/准备/index.html">
+<meta property="og:title" content="node.js + anywhere构建静态文件服务器">
+<meta property="og:url" content="https://github.com/liujingsong/2016/07/21/搭建本地静态文件服务器/index.html">
 <meta property="og:site_name" content="博客小屋">
-<meta property="og:description" content="搭建自己的博客    参考文章:  http://sunwhut.com/2015/10/30/buildBlog/
-
-工具准备
-选择工具
- 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大">
-<meta property="og:updated_time" content="2016-07-21T05:54:00.000Z">
+<meta property="og:description" content="node.js介绍及安装介绍&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。
+&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立">
+<meta property="og:updated_time" content="2016-07-21T06:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建自己的博客">
-<meta name="twitter:description" content="搭建自己的博客    参考文章:  http://sunwhut.com/2015/10/30/buildBlog/
-
-工具准备
-选择工具
- 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大">
+<meta name="twitter:title" content="node.js + anywhere构建静态文件服务器">
+<meta name="twitter:description" content="node.js介绍及安装介绍&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。
+&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立">
 
 
 
@@ -126,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="https://github.com/liujingsong/2016/07/21/准备/"/>
+  <link rel="canonical" href="https://github.com/liujingsong/2016/07/21/搭建本地静态文件服务器/"/>
 
-  <title> 搭建自己的博客 | 博客小屋 </title>
+  <title> node.js + anywhere构建静态文件服务器 | 博客小屋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +249,7 @@
             
             
               
-                搭建自己的博客
+                node.js + anywhere构建静态文件服务器
               
             
           </h1>
@@ -300,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/21/准备/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/准备/" itemprop="commentsCount"></span>
+                <a href="/2016/07/21/搭建本地静态文件服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/搭建本地静态文件服务器/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -324,31 +315,41 @@
       
 
       
-        <html><br><center><h1>搭建自己的博客</h1></center><br>    <body><p>参考文章:  <a><a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></a></p></body><br></html>
-
-<h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ul>
-<li><p>选择工具</p>
-<p> 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。<br>对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大家若能从中汲取些许即是双赢，何乐而不为呢。并且我希望我的博客网站具有如下特点：</p>
+        <h3 id="node-js介绍及安装"><a href="#node-js介绍及安装" class="headerlink" title="node.js介绍及安装"></a>node.js介绍及安装</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>&ensp;&ensp;&ensp;&ensp;<em>Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。</em></p>
+<p>&ensp;&ensp;&ensp;&ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
+<p>&ensp;&ensp;&ensp;&ensp;Node.js具有如下几个特点：</p>
 <ul>
-<li>免费</li>
-<li>独立</li>
-<li>维护方便</li>
-<li>编写方便</li>
-<li>流量稍大</li>
+<li>单线程非阻塞I/O调用</li>
+<li>模块化</li>
+<li>npm包管理</li>
 </ul>
-<p>针对以上特点，基本上可以锁定几个工具了，首先是 托管方：Github Pages无疑是包含以上所有特点于一身的不错选择。版本控制工具自然是 Git。至于编写工具：搭建博客可以考虑 Hexo 和 Octopress，编程语言的话，可以选择标记性语言markdown和html。编辑器可以考虑Atom。</p>
-<p><strong>  Github Pages、Git、Hexo、Octopress、Markdown、html、Atom </strong></p>
+<p>&ensp;&ensp;&ensp;&ensp;对于想深入学习node.js的可以参考<a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">http://nqdeng.github.io/7-days-nodejs/</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>可以到官网选择安装版本安装：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a></p>
+<h5 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h5><ol>
+<li>node 安装：直接下载exe文件或着.msi安装包。创建D:\nodejs目录，并将node.exe保存在这个目录中。并将”D:\nodejs”加入系统环境变量PATH中，便于在任意位置执行node.exe .</li>
+<li>npm安装：下载zip文件解压到node.exe所在目录中。运行npm.cmd。</li>
+</ol>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><ol>
+<li><p>node 安装：下载Node.js源代码，解压，进入目录，编译安装，node -v查看版本。</p>
+<blockquote>
+<ul>
+<li>./configure</li>
+<li>make</li>
+<li>sudo make install</li>
+</ul>
+</blockquote>
 </li>
-<li><p>工具配置使用</p>
-<p>  可以参考 <a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></p>
+<li><p>npm安装：下载脚本运行 <a href="https://npmjs.org/install.sh" target="_blank" rel="external">https://npmjs.org/install.sh</a></p>
 </li>
-</ul>
-<h3 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h3><ul>
-<li>博客主题风格，我选择了Hexo-NexT 。</li>
-<li>添加评论模块采用了多说系统。</li>
-<li>页面中小图标一方面用本地图，一方面用 easyIcon做图床。</li>
-<li>添加标签分类，参考 <a href="http://theme-next.iissnan.com/theme-settings.html#categories-page" target="_blank" rel="external">http://theme-next.iissnan.com/theme-settings.html#categories-page</a></li>
-</ul>
+</ol>
+<p>anywhere 的安装</p>
+<blockquote>
+<p>npm install anywhere -g，</p>
+</blockquote>
+<p>anywhere安装完，在本地硬盘建个文件夹，命令行进入文件夹，输入：</p>
+<blockquote>
+<p>anywhere</p>
+</blockquote>
 
       
     </div>
@@ -380,12 +381,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/21/准备/" rel="next" title="搭建自己的博客">
+                <i class="fa fa-chevron-left"></i> 搭建自己的博客
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/21/搭建本地静态文件服务器/" rel="prev" title="node.js + anywhere构建静态文件服务器">
-                node.js + anywhere构建静态文件服务器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/21/个人简历/" rel="prev" title="个人简历">
+                个人简历 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -412,8 +417,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/21/准备/"
-           data-title="搭建自己的博客" data-url="https://github.com/liujingsong/2016/07/21/准备/">
+      <div class="ds-thread" data-thread-key="2016/07/21/搭建本地静态文件服务器/"
+           data-title="node.js + anywhere构建静态文件服务器" data-url="https://github.com/liujingsong/2016/07/21/搭建本地静态文件服务器/">
       </div>
     
   </div>
@@ -504,7 +509,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">搭建自己的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工具准备"><span class="nav-number">1.0.1.</span> <span class="nav-text">工具准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博客内容"><span class="nav-number">1.0.2.</span> <span class="nav-text">博客内容</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#node-js介绍及安装"><span class="nav-number">1.</span> <span class="nav-text">node.js介绍及安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#windows"><span class="nav-number">1.2.1.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linux</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
