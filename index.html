@@ -245,323 +245,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/21/搭建本地静态文件服务器/" itemprop="url">
-                  node.js + anywhere构建静态文件服务器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T16:45:20+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/21/搭建本地静态文件服务器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/搭建本地静态文件服务器/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="node-js介绍及安装"><a href="#node-js介绍及安装" class="headerlink" title="node.js介绍及安装"></a>node.js介绍及安装</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>&ensp;&ensp;&ensp;&ensp;<em>Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。</em></p>
-<p>&ensp;&ensp;&ensp;&ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
-<p>&ensp;&ensp;&ensp;&ensp;Node.js具有如下几个特点：</p>
-<ul>
-<li>单线程非阻塞I/O调用</li>
-<li>模块化</li>
-<li>npm包管理</li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp;对于想深入学习node.js的可以参考<a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">http://nqdeng.github.io/7-days-nodejs/</a></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>可以到官网选择安装版本安装：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a></p>
-<h5 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h5><ol>
-<li>node 安装：直接下载exe文件或着.msi安装包。创建D:\nodejs目录，并将node.exe保存在这个目录中。并将”D:\nodejs”加入系统环境变量PATH中，便于在任意位置执行node.exe .</li>
-<li>npm安装：下载zip文件解压到node.exe所在目录中。运行npm.cmd。</li>
-</ol>
-<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><ol>
-<li><p>node 安装：下载Node.js源代码，解压，进入目录，编译安装，node -v查看版本。</p>
-<blockquote>
-<ul>
-<li>./configure</li>
-<li>make</li>
-<li>sudo make install</li>
-</ul>
-</blockquote>
-</li>
-<li><p>npm安装：下载脚本运行 <a href="https://npmjs.org/install.sh" target="_blank" rel="external">https://npmjs.org/install.sh</a></p>
-</li>
-</ol>
-<p>anywhere 的安装</p>
-<blockquote>
-<p>npm install anywhere -g，</p>
-</blockquote>
-<p>anywhere安装完，在本地硬盘建个文件夹，命令行进入文件夹，输入：</p>
-<blockquote>
-<p>anywhere</p>
-</blockquote>
-<h4 id="介绍一个快速生成-JSON-的-REST-API-服务器"><a href="#介绍一个快速生成-JSON-的-REST-API-服务器" class="headerlink" title="介绍一个快速生成 JSON 的 REST API 服务器"></a>介绍一个快速生成 JSON 的 REST API 服务器</h4><p>运用场景之一就是：<br>移动开发时，经常需要临时的本地服务器，而后台接口人员可能总是很忙，虽然定了字段，但迟迟不给接口。</p>
-<p>这个时候，要么将本地json打包到应用里开发测试（感觉很low），要么自己搞个服务器。</p>
-<p>这个时候只需要用npm 安装 json-server:</p>
-<blockquote>
-<p>$ npm install -g json-server</p>
-</blockquote>
-<p>然后创建  db.json 文件</p>
-<blockquote>
-<p>{<br>  “posts”: [<br>    { “id”: 1, “title”: “json-server”, “author”: “typicode” }<br>  ],<br>  “comments”: [<br>    { “id”: 1, “body”: “some comment”, “postId”: 1 }<br>  ],<br>  “profile”: { “name”: “typicode” }<br>}</p>
-</blockquote>
-<p>输入：</p>
-<blockquote>
-<p>$ json-server –watch db.json</p>
-</blockquote>
-<p>这时候访问 <a href="http://localhost:3000/posts/1" target="_blank" rel="external">http://localhost:3000/posts/1</a>, 就会得到</p>
-<blockquote>
-<p>{ “id”: 1, “title”: “json-server”, “author”: “typicode” }</p>
-</blockquote>
-<p>json-server 的项目地址：<a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/准备/" itemprop="url">
-                  搭建自己的博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T16:45:20+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/21/准备/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/准备/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <html><br><center><h1>搭建自己的博客</h1></center><br>    <body><p>参考文章:  <a><a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></a></p></body><br></html>
-
-<h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ul>
-<li><p>选择工具</p>
-<p> 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。<br>对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大家若能从中汲取些许即是双赢，何乐而不为呢。并且我希望我的博客网站具有如下特点：</p>
-<ul>
-<li>免费</li>
-<li>独立</li>
-<li>维护方便</li>
-<li>编写方便</li>
-<li>流量稍大</li>
-</ul>
-<p>针对以上特点，基本上可以锁定几个工具了，首先是 托管方：Github Pages无疑是包含以上所有特点于一身的不错选择。版本控制工具自然是 Git。至于编写工具：搭建博客可以考虑 Hexo 和 Octopress，编程语言的话，可以选择标记性语言markdown和html。编辑器可以考虑Atom。</p>
-<p><strong>  Github Pages、Git、Hexo、Octopress、Markdown、html、Atom </strong></p>
-</li>
-<li><p>工具配置使用</p>
-<p>  可以参考 <a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></p>
-</li>
-</ul>
-<h3 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h3><ul>
-<li>博客主题风格，我选择了Hexo-NexT 。</li>
-<li>添加评论模块采用了多说系统。</li>
-<li>页面中小图标一方面用本地图，一方面用 easyIcon做图床。</li>
-<li>添加标签分类，参考 <a href="http://theme-next.iissnan.com/theme-settings.html#categories-page" target="_blank" rel="external">http://theme-next.iissnan.com/theme-settings.html#categories-page</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/07/21/个人简历/" itemprop="url">
                   个人简历
                 </a>
@@ -576,7 +259,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T16:45:20+08:00" content="2016-07-21">
+            <time itemprop="dateCreated" datetime="2016-07-21T17:16:47+08:00" content="2016-07-21">
               2016-07-21
             </time>
           </span>
@@ -769,6 +452,323 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/21/准备/" itemprop="url">
+                  搭建自己的博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-21T17:16:47+08:00" content="2016-07-21">
+              2016-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/21/准备/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/准备/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <html><br><center><h1>搭建自己的博客</h1></center><br>    <body><p>参考文章:  <a><a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></a></p></body><br></html>
+
+<h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ul>
+<li><p>选择工具</p>
+<p> 选择工具，首先得明白为什么搭建博客，并且希望她是什么样的存在。<br>对我自己而言，因为我是做技术的，一方面我希望能把我工作，生活中的一些心得或者积累通过博客这种形式为大家所知。我不属于那种勤勤恳恳又默默无闻的工作狂（没有贬义），传播知识可以带来的成就感是我所得，大家若能从中汲取些许即是双赢，何乐而不为呢。并且我希望我的博客网站具有如下特点：</p>
+<ul>
+<li>免费</li>
+<li>独立</li>
+<li>维护方便</li>
+<li>编写方便</li>
+<li>流量稍大</li>
+</ul>
+<p>针对以上特点，基本上可以锁定几个工具了，首先是 托管方：Github Pages无疑是包含以上所有特点于一身的不错选择。版本控制工具自然是 Git。至于编写工具：搭建博客可以考虑 Hexo 和 Octopress，编程语言的话，可以选择标记性语言markdown和html。编辑器可以考虑Atom。</p>
+<p><strong>  Github Pages、Git、Hexo、Octopress、Markdown、html、Atom </strong></p>
+</li>
+<li><p>工具配置使用</p>
+<p>  可以参考 <a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">http://sunwhut.com/2015/10/30/buildBlog/</a></p>
+</li>
+</ul>
+<h3 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h3><ul>
+<li>博客主题风格，我选择了Hexo-NexT 。</li>
+<li>添加评论模块采用了多说系统。</li>
+<li>页面中小图标一方面用本地图，一方面用 easyIcon做图床。</li>
+<li>添加标签分类，参考 <a href="http://theme-next.iissnan.com/theme-settings.html#categories-page" target="_blank" rel="external">http://theme-next.iissnan.com/theme-settings.html#categories-page</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/21/搭建本地静态文件服务器/" itemprop="url">
+                  node.js + anywhere构建静态文件服务器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-21T17:16:47+08:00" content="2016-07-21">
+              2016-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/21/搭建本地静态文件服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/搭建本地静态文件服务器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="node-js介绍及安装"><a href="#node-js介绍及安装" class="headerlink" title="node.js介绍及安装"></a>node.js介绍及安装</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>&ensp;&ensp;&ensp;&ensp;<em>Node.js是一个开放源代码、跨平台的、可用于服务器端和网络应用的运行环境。Node.js应用JavaScript语言写成，在Node.js运行时运行。</em></p>
+<p>&ensp;&ensp;&ensp;&ensp;JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
+<p>&ensp;&ensp;&ensp;&ensp;Node.js具有如下几个特点：</p>
+<ul>
+<li>单线程非阻塞I/O调用</li>
+<li>模块化</li>
+<li>npm包管理</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;对于想深入学习node.js的可以参考<a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">http://nqdeng.github.io/7-days-nodejs/</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>可以到官网选择安装版本安装：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a></p>
+<h5 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h5><ol>
+<li>node 安装：直接下载exe文件或着.msi安装包。创建D:\nodejs目录，并将node.exe保存在这个目录中。并将”D:\nodejs”加入系统环境变量PATH中，便于在任意位置执行node.exe .</li>
+<li>npm安装：下载zip文件解压到node.exe所在目录中。运行npm.cmd。</li>
+</ol>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><ol>
+<li><p>node 安装：下载Node.js源代码，解压，进入目录，编译安装，node -v查看版本。</p>
+<blockquote>
+<ul>
+<li>./configure</li>
+<li>make</li>
+<li>sudo make install</li>
+</ul>
+</blockquote>
+</li>
+<li><p>npm安装：下载脚本运行 <a href="https://npmjs.org/install.sh" target="_blank" rel="external">https://npmjs.org/install.sh</a></p>
+</li>
+</ol>
+<p>anywhere 的安装</p>
+<blockquote>
+<p>npm install anywhere -g，</p>
+</blockquote>
+<p>anywhere安装完，在本地硬盘建个文件夹，命令行进入文件夹，输入：</p>
+<blockquote>
+<p>anywhere</p>
+</blockquote>
+<h4 id="介绍一个快速生成-JSON-的-REST-API-服务器"><a href="#介绍一个快速生成-JSON-的-REST-API-服务器" class="headerlink" title="介绍一个快速生成 JSON 的 REST API 服务器"></a>介绍一个快速生成 JSON 的 REST API 服务器</h4><p>运用场景之一就是：<br>移动开发时，经常需要临时的本地服务器，而后台接口人员可能总是很忙，虽然定了字段，但迟迟不给接口。</p>
+<p>这个时候，要么将本地json打包到应用里开发测试（感觉很low），要么自己搞个服务器。</p>
+<p>这个时候只需要用npm 安装 json-server:</p>
+<blockquote>
+<p>$ npm install -g json-server</p>
+</blockquote>
+<p>然后创建  db.json 文件</p>
+<blockquote>
+<p>{<br>  “posts”: [<br>    { “id”: 1, “title”: “json-server”, “author”: “typicode” }<br>  ],<br>  “comments”: [<br>    { “id”: 1, “body”: “some comment”, “postId”: 1 }<br>  ],<br>  “profile”: { “name”: “typicode” }<br>}</p>
+</blockquote>
+<p>输入：</p>
+<blockquote>
+<p>$ json-server –watch db.json</p>
+</blockquote>
+<p>这时候访问 <a href="http://localhost:3000/posts/1" target="_blank" rel="external">http://localhost:3000/posts/1</a>, 就会得到</p>
+<blockquote>
+<p>{ “id”: 1, “title”: “json-server”, “author”: “typicode” }</p>
+</blockquote>
+<p>json-server 的项目地址：<a href="https://github.com/typicode/json-server">https://github.com/typicode/json-server</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -802,7 +802,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://download.easyicon.net/png/12064/128/"
+               src="http://download.easyicon.net/png/12064/72/"
                alt="liujingsong" />
           <p class="site-author-name" itemprop="name">liujingsong</p>
           <p class="site-description motion-element" itemprop="description"></p>
